@@ -1,6 +1,6 @@
 {
   "name": "@georgecrawfordft/wdio-spec-reporter",
-  "version": "0.0.1-1",
+  "version": "0.0.1-2",
   "description": "A WebdriverIO plugin. Report results in 'spec' format.",
   "main": "build/reporter.js",
   "scripts": {
