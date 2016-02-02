@@ -1,6 +1,6 @@
 {
   "name": "@georgecrawfordft/wdio-spec-reporter",
-  "version": "0.0.0",
+  "version": "0.0.1-0",
   "description": "A WebdriverIO plugin. Report results in 'spec' format.",
   "main": "build/reporter.js",
   "scripts": {
@@ -27,8 +27,7 @@
     "url": "https://github.com/webdriverio/wdio-spec-reporter/issues"
   },
   "homepage": "https://github.com/webdriverio/wdio-spec-reporter#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.23",
