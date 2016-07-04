@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/webdriverio/wdio-spec-reporter#readme",
   "dependencies": {
+    "humanize-duration": "^3.9.0"
   },
   "devDependencies": {
     "babel": "^5.8.23",
