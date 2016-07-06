@@ -1,4 +1,4 @@
-WDIO Spec reporter
+WDIO Spec reporter [![Build Status](https://travis-ci.org/webdriverio/wdio-spec-reporter.svg?branch=master)](https://travis-ci.org/webdriverio/wdio-spec-reporter) [![Code Climate](https://codeclimate.com/github/webdriverio/wdio-spec-reporter/badges/gpa.svg)](https://codeclimate.com/github/webdriverio/wdio-spec-reporter) [![Test Coverage](https://codeclimate.com/github/webdriverio/wdio-spec-reporter/badges/coverage.svg)](https://codeclimate.com/github/webdriverio/wdio-spec-reporter/coverage)
 ==================
 
 > A WebdriverIO plugin to report in spec style.
