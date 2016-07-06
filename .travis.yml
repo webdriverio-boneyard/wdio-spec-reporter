@@ -1,7 +1,11 @@
 language: node_js
 
 node_js:
-  - '4.4.3'
+  - 4.4.3
 
 script:
   - ./node_modules/.bin/grunt
+
+env:
+  global:
+    secure: BRnXjCt5gNphkXiqCAoXs+aUVUn1ZfvLFeuu2TxFL1y4s44qLKHWd3ZJoUCdtGvULVcCNjWQb4Jfx8ef9ic0IOmHjuFVaFH26pvbGaM0/eFCixFpRk0xRO/8U4cR4qrqJ9Xo3bMbg2EFnq3tQQzq2vbqfWzXR0rM4RqYHOdyBvmztN+gvEnR5hp7lHdziyKfLsgRAe9Crh4ehbon+ze8Jq09bKuwfS2ldhBdEym9wpRRmnrdrrwc3ZmoEbResToWIhhvk+VUW4aOzHFKX1gkxssjIcV+rqH1P77zorevofYDflVHu6DSbpn6Hj1VG/v65CcMXrnXdB1CHDSEB1A8T9IGo6A8nSispydkiEXsJQoqSULYkuvEDnEqXapffcWqvDtebbCRjMukEiUPNC6xoZjGD69XcFLwTHkDfjW+T9dTRH1JwT53K8oZFCXK4J10I2sl/n7v6odntwdnA3keArAxAhwi5/G0k/+5uSW2GhCGfHfYQdBHXlk4UvRIaub6jVWHP1327Nwg04zXVBjIxeD5lwBIJbrMhWF+BBE7B6gXW2TR5Cyf+YSirc9sCN+8/9OJiZ1szHftKiL5jqTo9+60pnPcMRdTobI3RTBdn+DH/1xpNjMy9ZLK2ogDYXpgBmLUruHXUAa8QiVTJpyF6baEPCo6ApehpxtvQ+j1pjo=
