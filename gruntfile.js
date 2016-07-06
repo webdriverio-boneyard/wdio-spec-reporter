@@ -23,12 +23,11 @@ module.exports = function (grunt) {
             coverage: {
                 src: ['test/*.js'],
                 options: {
+                    scriptPath: require.resolve('isparta/bin/isparta'),
                     reporter: 'spec',
-                    require: [
-                        'should',
-                        './test/bootstrap'
-                    ],
-                    scriptPath: path.join(__dirname, 'node_modules', 'babel-istanbul', 'lib', 'cli')
+                    nodeExec: require.resolve('.bin/babel-node'),
+                    mochaOptions: ['--compilers', 'js:babel/register', '--recursive', '-t', '60000'],
+                    require: ['should']
                 }
             }
         },
