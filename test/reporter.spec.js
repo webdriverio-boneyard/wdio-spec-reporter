@@ -1,5 +1,9 @@
 import SpecReporter from '../lib/reporter'
-import { SUITE, COLORS, RESULTLIST, SUMMARY, ERRORS, ERRORS_NO_STACK, ERRORLIST, ERRORLIST_NO_STACK, STATS, SUITERESULT, JOBLINKRESULT } from './fixtures'
+import {
+    SUITE, COLORS, RESULTLIST, SUMMARY, ERRORS, ERRORLIST,
+    STATS, STATS_WITH_NO_SPECS, SUITERESULT, JOBLINKRESULT,
+    ERRORS_NO_STACK, ERRORLIST_NO_STACK
+} from './fixtures'
 
 const baseReporter = {
     symbols: {
@@ -179,6 +183,17 @@ describe('spec reporter', () => {
             reporter.getJobLink = () => ''
 
             reporter.getSuiteResult({ cid: 22 }).should.be.equal(SUITERESULT)
+        })
+
+        it('should not print anything if no spec got executed', () => {
+            reporter.specs = { '22': '/path/to/spec.js' }
+            reporter.baseReporter.stats = STATS_WITH_NO_SPECS
+            reporter.getResultList = () => ''
+            reporter.getSummary = () => ''
+            reporter.getFailureList = () => ''
+            reporter.getJobLink = () => ''
+
+            reporter.getSuiteResult({ cid: 22 }).should.be.equal('')
         })
     })
 })

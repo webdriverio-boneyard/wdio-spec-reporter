@@ -49,7 +49,27 @@ export const STATS = {
                 browserName: 'phantomjs'
             },
             specs: {
-                '12345': {}
+                '12345': {
+                    suites: SUITE
+                }
+            },
+            sessionID: '12345-12345-12345'
+        }
+    },
+    getSpecHash: () => '12345',
+    getFailures: () => []
+}
+
+export const STATS_WITH_NO_SPECS = {
+    runners: {
+        '22': {
+            capabilities: {
+                browserName: 'phantomjs'
+            },
+            specs: {
+                '12345': {
+                    suites: {}
+                }
             },
             sessionID: '12345-12345-12345'
         }
