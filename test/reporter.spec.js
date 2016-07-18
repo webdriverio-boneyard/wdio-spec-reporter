@@ -1,5 +1,5 @@
 import SpecReporter from '../lib/reporter'
-import { SUITE, COLORS, RESULTLIST, SUMMARY, ERRORS, ERRORLIST, STATS, SUITERESULT, JOBLINKRESULT } from './fixtures'
+import { SUITE, COLORS, RESULTLIST, SUMMARY, ERRORS, ERRORS_NO_STACK, ERRORLIST, ERRORLIST_NO_STACK, STATS, SUITERESULT, JOBLINKRESULT } from './fixtures'
 
 const baseReporter = {
     symbols: {
@@ -145,6 +145,10 @@ describe('spec reporter', () => {
     describe('getFailureList', () => {
         it('should return correct failure list', () => {
             reporter.getFailureList(ERRORS, 'kuckkuck> ').should.be.equal(ERRORLIST)
+        })
+
+        it('should handle error messages without a stack trace correctly', () => {
+            reporter.getFailureList(ERRORS_NO_STACK, 'kuckkuck> ').should.be.equal(ERRORLIST_NO_STACK)
         })
     })
 

@@ -34,6 +34,14 @@ export const ERRORS = [{
     }
 }]
 
+export const ERRORS_NO_STACK = [{
+    parent: 'some parent',
+    title: 'some title',
+    err: {
+        message: 'Ooops'
+    }
+}]
+
 export const STATS = {
     runners: {
         '22': {
@@ -103,6 +111,12 @@ kuckkuck>  \u001b[31moh shit\u001b[0m
 kuckkuck>  \u001b[90msomething\u001b[0m
 kuckkuck>  \u001b[90mwent\u001b[0m
 kuckkuck>  \u001b[90mwrong\u001b[0m
+`
+
+export const ERRORLIST_NO_STACK = `kuckkuck>
+kuckkuck>  \u001b[0m1) some parent some title:\u001b[0m
+kuckkuck>  \u001b[31mOoops\u001b[0m
+kuckkuck>  \u001b[90mno stack available\u001b[0m
 `
 
 export const SUITERESULT = `------------------------------------------------------------------
