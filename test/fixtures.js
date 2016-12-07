@@ -1,20 +1,50 @@
 export const SUITE = {
-    'some foobar test': {
+    'some foobar test1': {
+        uid: 'some foobar test1',
+        title: 'some foobar test',
         tests: {
-            'foo': { state: 'pass' },
-            'bar': { state: 'pending' }
+            'foo1': {
+                title: 'foo',
+                uid: 'foo1',
+                state: 'pass'
+            },
+            'bar2': {
+                title: 'bar',
+                uid: 'bar2',
+                state: 'pending'
+            }
         }
     },
-    'some other foobar test': {
+    'some other foobar test2': {
+        uid: 'some other foobar test2',
+        title: 'some other foobar test',
         tests: {
-            'that is a test': { state: 'pass' },
-            'and another test': { state: 'fail' }
+            'that is a test4': {
+                uid: 'that is a test4',
+                title: 'that is a test',
+                state: 'pass'
+            },
+            'and another test': {
+                uid: 'and another test5',
+                title: 'and another test',
+                state: 'fail'
+            }
         }
     },
-    'some spec title': {
+    'some spec title3': {
+        uid: 'some spec title3',
+        title: 'some spec title',
         tests: {
-            'some last test': { state: 'fail' },
-            'really last': { state: 'fail' }
+            'some last test6': {
+                uid: 'some last test6',
+                title: 'some last test',
+                state: 'fail'
+            },
+            'really last7': {
+                uid: 'really last7',
+                title: 'really last',
+                state: 'fail'
+            }
         }
     }
 }
