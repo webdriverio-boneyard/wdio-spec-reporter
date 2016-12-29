@@ -122,6 +122,24 @@ describe('spec reporter', () => {
                 browserName: 'Safari'
             }, false).should.be.equal('iPhone 6 Plus iOS 9.2')
         })
+
+        it('should return verbose desktop combo when using BrowserStack capabilities', () => {
+            reporter.getBrowserCombo({
+                browser: 'Chrome',
+                browser_version: 50,
+                os: 'Windows',
+                os_version: '10'
+            }).should.be.equal('Chrome (v50) on Windows 10')
+        })
+
+        it('should return preface desktop combo when using BrowserStack capabilities', () => {
+            reporter.getBrowserCombo({
+                browser: 'Chrome',
+                browser_version: 50,
+                os: 'Windows',
+                os_version: '10'
+            }, false).should.be.equal('Chrome 50 Windows 10')
+        })
     })
 
     describe('getResultList', () => {
