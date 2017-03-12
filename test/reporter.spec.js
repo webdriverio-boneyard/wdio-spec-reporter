@@ -50,7 +50,7 @@ describe('spec reporter', () => {
             reporter.getColor('fail').should.be.equal('fail')
             reporter.getColor('fail').should.be.equal('fail')
             reporter.getColor('failing').should.be.equal('fail');
-            (reporter.getColor('foobar') === null).should.be.true
+            (reporter.getColor('foobar') === null).should.be.true()
         })
     })
 
