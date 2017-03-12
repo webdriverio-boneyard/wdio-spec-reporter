@@ -1,5 +1,9 @@
-WDIO Spec reporter [![Build Status](https://travis-ci.org/webdriverio/wdio-spec-reporter.svg?branch=master)](https://travis-ci.org/webdriverio/wdio-spec-reporter) [![Code Climate](https://codeclimate.com/github/webdriverio/wdio-spec-reporter/badges/gpa.svg)](https://codeclimate.com/github/webdriverio/wdio-spec-reporter) [![Test Coverage](https://codeclimate.com/github/webdriverio/wdio-spec-reporter/badges/coverage.svg)](https://codeclimate.com/github/webdriverio/wdio-spec-reporter/coverage)
+WDIO Spec Reporter
 ==================
+
+[![Build Status](https://travis-ci.org/webdriverio/wdio-spec-reporter.svg?branch=master)](https://travis-ci.org/webdriverio/wdio-spec-reporter) [![Code Climate](https://codeclimate.com/github/webdriverio/wdio-spec-reporter/badges/gpa.svg)](https://codeclimate.com/github/webdriverio/wdio-spec-reporter) [![Test Coverage](https://codeclimate.com/github/webdriverio/wdio-spec-reporter/badges/coverage.svg)](https://codeclimate.com/github/webdriverio/wdio-spec-reporter/coverage) [![dependencies Status](https://david-dm.org/webdriverio/wdio-spec-reporter/status.svg)](https://david-dm.org/webdriverio/wdio-spec-reporter)
+
+***
 
 > A WebdriverIO plugin to report in spec style.
 
@@ -12,7 +16,7 @@ The easiest way is to keep `wdio-spec-reporter` as a devDependency in your `pack
 ```json
 {
   "devDependencies": {
-    "wdio-spec-reporter": "~0.0.1"
+    "wdio-spec-reporter": "~0.0.6"
   }
 }
 ```
@@ -37,6 +41,31 @@ module.exports = {
   reporters: ['dot', 'spec'],
   // ...
 };
+```
+
+## Development
+
+All commands can be found in the package.json. The most important are:
+
+Watch changes:
+
+```sh
+$ npm run watch
+```
+
+Run tests:
+
+```sh
+$ npm test
+
+# run test with coverage report:
+$ npm run test:cover
+```
+
+Build package:
+
+```sh
+$ npm build
 ```
 
 ----
