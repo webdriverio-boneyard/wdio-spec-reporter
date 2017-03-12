@@ -130,17 +130,17 @@ export const COLORS = {
     'diff removed': 31
 }
 
-export const RESULTLIST = `kuckkuck>    some foobar test
-kuckkuck>        \u001b[32m✓\u001b[0m foo
-kuckkuck>        \u001b[36m-\u001b[0m bar
+export const RESULTLIST = `kuckkuck>  some foobar test
+kuckkuck>    \u001b[32m✓\u001b[0m foo
+kuckkuck>    \u001b[36m-\u001b[0m bar
 kuckkuck>
-kuckkuck>    some other foobar test
-kuckkuck>        \u001b[32m✓\u001b[0m that is a test
-kuckkuck>        \u001b[31m28)\u001b[0m and another test
+kuckkuck>  some other foobar test
+kuckkuck>    \u001b[32m✓\u001b[0m that is a test
+kuckkuck>    \u001b[31m28)\u001b[0m and another test
 kuckkuck>
-kuckkuck>    some spec title
-kuckkuck>        \u001b[31m29)\u001b[0m some last test
-kuckkuck>        \u001b[31m30)\u001b[0m really last
+kuckkuck>  some spec title
+kuckkuck>    \u001b[31m29)\u001b[0m some last test
+kuckkuck>    \u001b[31m30)\u001b[0m really last
 kuckkuck>
 `
 

@@ -20,15 +20,18 @@ const reporter = new SpecReporter(baseReporter)
 
 describe('spec reporter', () => {
     describe('indent', () => {
-        it('should return nothing if indent is negative', () => {
-            reporter.indent().should.be.equal('')
+        it('should return nothing if indent is 1', () => {
+            reporter.suiteIndents[0] = {
+                'some spec title': 1
+            }
+            reporter.indent(0, 'some spec title').should.be.equal('')
         })
 
         it('should return correct indent', () => {
             reporter.suiteIndents[0] = {
                 'some spec title': 3
             }
-            reporter.indent(0, 'some spec title').should.be.equal('    ')
+            reporter.indent(0, 'some spec title').should.be.equal('        ')
         })
     })
 
