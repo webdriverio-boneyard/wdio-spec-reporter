@@ -2,7 +2,8 @@ import SpecReporter from '../lib/reporter'
 import {
     SUITE, COLORS, RESULTLIST, SUMMARY, ERRORS, ERRORLIST,
     STATS, STATS_WITH_NO_SPECS, SUITERESULT, JOBLINKRESULT,
-    ERRORS_NO_STACK, ERRORLIST_NO_STACK
+    ERRORS_NO_STACK, ERRORLIST_NO_STACK, SUITES_SUMMARY,
+    STATS_WITH_MULTIPLE_RUNNERS
 } from './fixtures'
 
 const baseReporter = {
@@ -215,6 +216,20 @@ describe('spec reporter', () => {
             reporter.getJobLink = () => ''
 
             reporter.getSuiteResult({ cid: 22 }).should.be.equal('')
+        })
+    })
+
+    describe('getSuitesSummary', () => {
+        it('should not print suite summary if only one spec was running', () => {
+            reporter.baseReporter.stats = STATS
+            reporter.baseReporter.epilogue = () => {}
+            reporter.getSuitesSummary().should.be.equal('')
+        })
+
+        it('should not print suite summary if more than one spec was running', () => {
+            reporter.baseReporter.stats = STATS_WITH_MULTIPLE_RUNNERS
+            reporter.baseReporter.epilogue = () => {}
+            reporter.getSuitesSummary().should.be.equal(SUITES_SUMMARY)
         })
     })
 })

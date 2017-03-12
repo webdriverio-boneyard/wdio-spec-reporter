@@ -108,6 +108,35 @@ export const STATS_WITH_NO_SPECS = {
     getFailures: () => []
 }
 
+export const STATS_WITH_MULTIPLE_RUNNERS = {
+    runners: {
+        '22': {
+            capabilities: {
+                browserName: 'phantomjs'
+            },
+            specs: {
+                '12345': {
+                    suites: SUITE
+                }
+            },
+            sessionID: '12345-12345-12345'
+        },
+        '23': {
+            capabilities: {
+                browserName: 'phantomjs'
+            },
+            specs: {
+                '12345': {
+                    suites: SUITE
+                }
+            },
+            sessionID: '12345-12345-12345'
+        }
+    },
+    getSpecHash: () => '12345',
+    getFailures: () => []
+}
+
 export const COLORS = {
     'pass': 90,
     'fail': 31,
@@ -181,3 +210,8 @@ export const SUITERESULT = `----------------------------------------------------
 export const JOBLINKRESULT = `kuckkuck>
 kuckkuck>  Check out job at https://saucelabs.com/tests/12345-12345-12345
 `
+
+export const SUITES_SUMMARY = `
+
+==================================================================
+Number of specs: 2`
