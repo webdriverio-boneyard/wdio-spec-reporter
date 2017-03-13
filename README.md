@@ -16,7 +16,7 @@ The easiest way is to keep `wdio-spec-reporter` as a devDependency in your `pack
 ```json
 {
   "devDependencies": {
-    "wdio-spec-reporter": "~0.0.6"
+    "wdio-spec-reporter": "~0.1.0"
   }
 }
 ```
