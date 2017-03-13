@@ -1,3 +1,4 @@
+import sinon from 'sinon'
 import SpecReporter from '../lib/reporter'
 import {
     SUITE, COLORS, RESULTLIST, SUMMARY, ERRORS, ERRORLIST,
@@ -219,9 +220,31 @@ describe('spec reporter', () => {
         })
     })
 
-    describe('getSuitesSummary', () => {
+    describe('printSuitesSummary', () => {
+        const origConsoleLog = console.log
+
         it('should print summary of how many specs where run', () => {
-            reporter.getSuitesSummary(2).should.be.equal(SUITES_SUMMARY)
+            reporter.baseReporter.stats = STATS_WITH_MULTIPLE_RUNNERS
+            reporter.baseReporter.epilogue = () => console.log('foobar')
+
+            console.log = sinon.spy()
+            reporter.printSuitesSummary()
+            const wasCalledCorrectly = console.log.calledWith(SUITES_SUMMARY)
+
+            console.log = origConsoleLog
+            wasCalledCorrectly.should.be.ok()
+        })
+
+        it('should not print summary if only one spec was run', () => {
+            reporter.baseReporter.stats = STATS
+            reporter.baseReporter.epilogue = () => console.log('foobar')
+
+            console.log = sinon.spy()
+            reporter.printSuitesSummary()
+            const callCount = console.log.callCount
+
+            console.log = origConsoleLog
+            callCount.should.be.equal(0)
         })
     })
 })
