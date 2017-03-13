@@ -220,16 +220,8 @@ describe('spec reporter', () => {
     })
 
     describe('getSuitesSummary', () => {
-        it('should not print suite summary if only one spec was running', () => {
-            reporter.baseReporter.stats = STATS
-            reporter.baseReporter.epilogue = () => {}
-            reporter.getSuitesSummary().should.be.equal('')
-        })
-
-        it('should not print suite summary if more than one spec was running', () => {
-            reporter.baseReporter.stats = STATS_WITH_MULTIPLE_RUNNERS
-            reporter.baseReporter.epilogue = () => {}
-            reporter.getSuitesSummary().should.be.equal(SUITES_SUMMARY)
+        it('should print summary of how many specs where run', () => {
+            reporter.getSuitesSummary(2).should.be.equal(SUITES_SUMMARY)
         })
     })
 })
