@@ -45,9 +45,8 @@ describe('spec reporter', () => {
     })
 
     describe('the runner:end event', () => {
-        const origPrintSuiteResult = reporter.printSuiteResult
-
         it('should print results', done => {
+            const origPrintSuiteResult = reporter.printSuiteResult
             reporter.printSuiteResult = () => done()
             reporter.emit('runner:end', {
                 cid: 42
@@ -105,9 +104,8 @@ describe('spec reporter', () => {
     })
 
     describe('the end event', () => {
-        const origPrintSuitesSummary = reporter.printSuitesSummary
-
         it('should print summary', done => {
+            const origPrintSuitesSummary = reporter.printSuitesSummary
             reporter.printSuitesSummary = () => done()
             reporter.emit('end')
 
@@ -297,7 +295,19 @@ describe('spec reporter', () => {
     })
 
     describe('printSuiteResult', () => {
-        const origConsoleLog = console.log
+        let origConsoleLog
+
+        before(() => {
+            origConsoleLog = console.log
+        })
+
+        beforeEach(() => {
+            console.log = sinon.spy()
+        })
+
+        afterEach(() => {
+            console.log = origConsoleLog
+        })
 
         it('should print correct suite result', () => {
             reporter.specs = { '22': '/path/to/spec.js' }
@@ -307,11 +317,9 @@ describe('spec reporter', () => {
             reporter.getFailureList = () => ''
             reporter.getJobLink = () => ''
 
-            console.log = sinon.spy()
             reporter.printSuiteResult({ cid: 22 })
             const wasCalledCorrectly = console.log.calledWith(SUITERESULT)
 
-            console.log = origConsoleLog
             wasCalledCorrectly.should.be.ok()
         })
 
@@ -323,27 +331,35 @@ describe('spec reporter', () => {
             reporter.getFailureList = () => ''
             reporter.getJobLink = () => ''
 
-            console.log = sinon.spy()
             reporter.printSuiteResult({ cid: 22 })
             const wasCalledCorrectly = console.log.calledWith('')
 
-            console.log = origConsoleLog
             wasCalledCorrectly.should.be.ok()
         })
     })
 
     describe('printSuitesSummary', () => {
-        const origConsoleLog = console.log
+        let origConsoleLog
+
+        before(() => {
+            origConsoleLog = console.log
+        })
+
+        beforeEach(() => {
+            console.log = sinon.spy()
+        })
+
+        afterEach(() => {
+            console.log = origConsoleLog
+        })
 
         it('should print summary of how many specs where run', () => {
             reporter.baseReporter.stats = STATS_WITH_MULTIPLE_RUNNERS
             reporter.baseReporter.epilogue = () => console.log('foobar')
 
-            console.log = sinon.spy()
             reporter.printSuitesSummary()
             const wasCalledCorrectly = console.log.calledWith(SUITES_SUMMARY)
 
-            console.log = origConsoleLog
             wasCalledCorrectly.should.be.ok()
         })
 
@@ -351,11 +367,9 @@ describe('spec reporter', () => {
             reporter.baseReporter.stats = STATS
             reporter.baseReporter.epilogue = () => console.log('foobar')
 
-            console.log = sinon.spy()
             reporter.printSuitesSummary()
             const callCount = console.log.callCount
 
-            console.log = origConsoleLog
             callCount.should.be.equal(0)
         })
     })
