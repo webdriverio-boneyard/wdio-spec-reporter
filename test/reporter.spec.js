@@ -21,6 +21,98 @@ const baseReporter = {
 const reporter = new SpecReporter(baseReporter)
 
 describe('spec reporter', () => {
+    describe('the runner:start event', () => {
+        it('should setup an initial state', () => {
+            reporter.emit('runner:start', {
+                cid: 42,
+                specs: {
+                    a: false,
+                    b: 1
+                }
+            })
+            reporter.suiteIndents[42].should.be.empty()
+            reporter.indents[42].should.equal(0)
+            reporter.specs[42].should.eql({
+                a: false,
+                b: 1
+            })
+            reporter.results[42].should.eql({
+                passing: 0,
+                pending: 0,
+                failing: 0
+            })
+        })
+    })
+
+    describe('the runner:end event', () => {
+        it('should print results', done => {
+            const origPrintSuiteResult = reporter.printSuiteResult
+            reporter.printSuiteResult = () => done()
+            reporter.emit('runner:end', {
+                cid: 42
+            })
+
+            reporter.printSuiteResult = origPrintSuiteResult
+        })
+    })
+
+    describe('the suite:start event', () => {
+        it('should increase indent', () => {
+            reporter.emit('suite:start', {
+                cid: 42,
+                uid: '123'
+            })
+            reporter.suiteIndents[42][123].should.equal(1)
+            reporter.indents[42].should.equal(1)
+        })
+    })
+
+    describe('the suite:end event', () => {
+        it('should decrease indent', () => {
+            reporter.emit('suite:end', {
+                cid: 42
+            })
+            reporter.indents[42].should.equal(0)
+        })
+    })
+
+    describe('the test:pending event', () => {
+        it('should increase pending tests', () => {
+            reporter.emit('test:pending', {
+                cid: 42
+            })
+            reporter.results[42].pending.should.equal(1)
+        })
+    })
+
+    describe('the test:pass event', () => {
+        it('should increase passing tests', () => {
+            reporter.emit('test:pass', {
+                cid: 42
+            })
+            reporter.results[42].passing.should.equal(1)
+        })
+    })
+
+    describe('the test:fail event', () => {
+        it('should increase failing tests', () => {
+            reporter.emit('test:fail', {
+                cid: 42
+            })
+            reporter.results[42].failing.should.equal(1)
+        })
+    })
+
+    describe('the end event', () => {
+        it('should print summary', done => {
+            const origPrintSuitesSummary = reporter.printSuitesSummary
+            reporter.printSuitesSummary = () => done()
+            reporter.emit('end')
+
+            reporter.printSuitesSummary = origPrintSuitesSummary
+        })
+    })
+
     describe('indent', () => {
         it('should return nothing if indent is 1', () => {
             reporter.suiteIndents[0] = {
@@ -167,6 +259,12 @@ describe('spec reporter', () => {
                 failing: 2
             }, 139000, 'kuckkuck> ').should.be.equal(SUMMARY)
         })
+
+        it('should skip if the count is zero', () => {
+            reporter.getSummary({
+                passing: 0
+            }, 139000, 'kuckkuck> ').should.be.equal('')
+        })
     })
 
     describe('getFailureList', () => {
@@ -197,6 +295,20 @@ describe('spec reporter', () => {
     })
 
     describe('printSuiteResult', () => {
+        let origConsoleLog
+
+        before(() => {
+            origConsoleLog = console.log
+        })
+
+        beforeEach(() => {
+            console.log = sinon.spy()
+        })
+
+        afterEach(() => {
+            console.log = origConsoleLog
+        })
+
         it('should print correct suite result', () => {
             reporter.specs = { '22': '/path/to/spec.js' }
             reporter.baseReporter.stats = STATS
@@ -205,7 +317,10 @@ describe('spec reporter', () => {
             reporter.getFailureList = () => ''
             reporter.getJobLink = () => ''
 
-            reporter.getSuiteResult({ cid: 22 }).should.be.equal(SUITERESULT)
+            reporter.printSuiteResult({ cid: 22 })
+            const wasCalledCorrectly = console.log.calledWith(SUITERESULT)
+
+            wasCalledCorrectly.should.be.ok()
         })
 
         it('should not print anything if no spec got executed', () => {
@@ -216,22 +331,35 @@ describe('spec reporter', () => {
             reporter.getFailureList = () => ''
             reporter.getJobLink = () => ''
 
-            reporter.getSuiteResult({ cid: 22 }).should.be.equal('')
+            reporter.printSuiteResult({ cid: 22 })
+            const wasCalledCorrectly = console.log.calledWith('')
+
+            wasCalledCorrectly.should.be.ok()
         })
     })
 
     describe('printSuitesSummary', () => {
-        const origConsoleLog = console.log
+        let origConsoleLog
+
+        before(() => {
+            origConsoleLog = console.log
+        })
+
+        beforeEach(() => {
+            console.log = sinon.spy()
+        })
+
+        afterEach(() => {
+            console.log = origConsoleLog
+        })
 
         it('should print summary of how many specs where run', () => {
             reporter.baseReporter.stats = STATS_WITH_MULTIPLE_RUNNERS
             reporter.baseReporter.epilogue = () => console.log('foobar')
 
-            console.log = sinon.spy()
             reporter.printSuitesSummary()
             const wasCalledCorrectly = console.log.calledWith(SUITES_SUMMARY)
 
-            console.log = origConsoleLog
             wasCalledCorrectly.should.be.ok()
         })
 
@@ -239,11 +367,9 @@ describe('spec reporter', () => {
             reporter.baseReporter.stats = STATS
             reporter.baseReporter.epilogue = () => console.log('foobar')
 
-            console.log = sinon.spy()
             reporter.printSuitesSummary()
             const callCount = console.log.callCount
 
-            console.log = origConsoleLog
             callCount.should.be.equal(0)
         })
     })

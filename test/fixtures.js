@@ -1,4 +1,5 @@
 export const SUITE = {
+    '"before all"': {},
     'some foobar test1': {
         uid: 'some foobar test1',
         title: 'some foobar test',
@@ -28,6 +29,11 @@ export const SUITE = {
                 uid: 'and another test5',
                 title: 'and another test',
                 state: 'fail'
+            },
+            'even more tests, but invalid state': {
+                uid: 'and another test6',
+                title: 'and another different test',
+                state: ''
             }
         }
     },
