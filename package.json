@@ -61,7 +61,7 @@
     "eslint-plugin-standard": "~3.0.0",
     "isparta": "~4.0.0",
     "istanbul": "~0.4.5",
-    "mocha": "~3.2.0",
+    "mocha": "~3.3.0",
     "np": "~2.13.2",
     "npm-run-all": "~4.0.2",
     "should": "~11.2.1",
