@@ -65,7 +65,7 @@
     "np": "~2.13.2",
     "npm-run-all": "~4.0.2",
     "should": "~11.2.1",
-    "sinon": "~2.0.0"
+    "sinon": "~2.2.0"
   },
   "contributors": [
     "George Crawford <george.crawford@ft.com>",
