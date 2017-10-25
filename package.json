@@ -42,7 +42,7 @@
   "homepage": "https://github.com/webdriverio/wdio-spec-reporter#readme",
   "dependencies": {
     "babel-runtime": "~6.26.0",
-    "humanize-duration": "~3.10.0"
+    "humanize-duration": "~3.11.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
