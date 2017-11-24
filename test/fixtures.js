@@ -143,65 +143,43 @@ export const STATS_WITH_MULTIPLE_RUNNERS = {
     getFailures: () => []
 }
 
-export const COLORS = {
-    'pass': 90,
-    'fail': 31,
-    'bright pass': 92,
-    'bright fail': 91,
-    'bright yellow': 93,
-    'pending': 36,
-    'suite': 0,
-    'error title': 0,
-    'error message': 31,
-    'error stack': 90,
-    'checkmark': 32,
-    'fast': 90,
-    'medium': 33,
-    'slow': 31,
-    'green': 32,
-    'light': 90,
-    'diff gutter': 90,
-    'diff added': 32,
-    'diff removed': 31
-}
-
 export const RESULTLIST = `kuckkuck>  some foobar test
-kuckkuck>    \u001b[32m✓\u001b[0m foo
-kuckkuck>    \u001b[36m-\u001b[0m bar
+kuckkuck>    \u001b[32m✓\u001b[39m foo
+kuckkuck>    \u001b[36m-\u001b[39m bar
 kuckkuck>
 kuckkuck>  some other foobar test
-kuckkuck>    \u001b[32m✓\u001b[0m that is a test
-kuckkuck>    \u001b[31m28)\u001b[0m and another test
+kuckkuck>    \u001b[32m✓\u001b[39m that is a test
+kuckkuck>    \u001b[31m28)\u001b[39m and another test
 kuckkuck>
 kuckkuck>  some spec title
-kuckkuck>    \u001b[31m29)\u001b[0m some last test
-kuckkuck>    \u001b[31m30)\u001b[0m really last
+kuckkuck>    \u001b[31m29)\u001b[39m some last test
+kuckkuck>    \u001b[31m30)\u001b[39m really last
 kuckkuck>
 `
 
-export const SUMMARY = `kuckkuck>  \u001b[32m3\u001b[0m \u001b[32mpassing\u001b[0m (2m, 19s)
-kuckkuck>  \u001b[36m1\u001b[0m \u001b[36mpending\u001b[0m
-kuckkuck>  \u001b[31m2\u001b[0m \u001b[31mfailing\u001b[0m
+export const SUMMARY = `kuckkuck>  \u001b[32m3\u001b[39m \u001b[32mpassing\u001b[39m (2m, 19s)
+kuckkuck>  \u001b[36m1\u001b[39m \u001b[36mpending\u001b[39m
+kuckkuck>  \u001b[31m2\u001b[39m \u001b[31mfailing\u001b[39m
 `
 
 export const ERRORLIST = `kuckkuck>
-kuckkuck>  \u001b[0m1) some parent some title:\u001b[0m
-kuckkuck>  \u001b[31mOoops\u001b[0m
-kuckkuck>  \u001b[90mHi\u001b[0m
-kuckkuck>  \u001b[90mwhat up\u001b[0m
-kuckkuck>  \u001b[90mthere?\u001b[0m
+kuckkuck>  1) some parent some title:
+kuckkuck>  \u001b[31mOoops\u001b[39m
+kuckkuck>  \u001b[90mHi\u001b[39m
+kuckkuck>  \u001b[90mwhat up\u001b[39m
+kuckkuck>  \u001b[90mthere?\u001b[39m
 kuckkuck>
-kuckkuck>  \u001b[0m2) some other title:\u001b[0m
-kuckkuck>  \u001b[31moh shit\u001b[0m
-kuckkuck>  \u001b[90msomething\u001b[0m
-kuckkuck>  \u001b[90mwent\u001b[0m
-kuckkuck>  \u001b[90mwrong\u001b[0m
+kuckkuck>  2) some other title:
+kuckkuck>  \u001b[31moh shit\u001b[39m
+kuckkuck>  \u001b[90msomething\u001b[39m
+kuckkuck>  \u001b[90mwent\u001b[39m
+kuckkuck>  \u001b[90mwrong\u001b[39m
 `
 
 export const ERRORLIST_NO_STACK = `kuckkuck>
-kuckkuck>  \u001b[0m1) some parent some title:\u001b[0m
-kuckkuck>  \u001b[31mOoops\u001b[0m
-kuckkuck>  \u001b[90mno stack available\u001b[0m
+kuckkuck>  1) some parent some title:
+kuckkuck>  \u001b[31mOoops\u001b[39m
+kuckkuck>  \u001b[90mno stack available\u001b[39m
 `
 
 export const SUITERESULT = `------------------------------------------------------------------
