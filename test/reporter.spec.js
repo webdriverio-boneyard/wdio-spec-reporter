@@ -1,4 +1,5 @@
 import sinon from 'sinon'
+import chalk from 'chalk'
 import SpecReporter from '../lib/reporter'
 import {
     SUITE, RESULTLIST, SUMMARY, ERRORS, ERRORLIST,
@@ -16,6 +17,11 @@ const baseReporter = {
     }
 }
 const reporter = new SpecReporter(baseReporter)
+
+/**
+ * disable colors for testing purposes
+ */
+reporter.chalk = new chalk.constructor({level: 0})
 
 describe('spec reporter', () => {
     describe('the runner:start event', () => {
