@@ -42,6 +42,7 @@
   "homepage": "https://github.com/webdriverio/wdio-spec-reporter#readme",
   "dependencies": {
     "babel-runtime": "~6.26.0",
+    "chalk": "^2.3.0",
     "humanize-duration": "~3.12.0"
   },
   "devDependencies": {
