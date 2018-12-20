@@ -58,24 +58,34 @@ export const SUITE = {
 export const ERRORS = [{
     parent: 'some parent',
     title: 'some title',
-    err: {
+    err: [{
         message: 'Ooops',
         stack: 'Hi\nwhat up\nthere?'
-    }
+    }]
 }, {
     title: 'some other title',
-    err: {
+    err: [{
         message: 'oh shit',
         stack: 'something\nwent\nwrong'
-    }
+    }]
 }]
-
+export const ERRORS_W_PASS = [{
+    parent: 'some parent',
+    title: 'some title',
+    err: [{
+        message: 'Ooops',
+        stack: 'Hi\nwhat up\nthere?'
+    }],
+    nonerr: [{
+        message: 'oh good'
+    }]
+}]
 export const ERRORS_NO_STACK = [{
     parent: 'some parent',
     title: 'some title',
-    err: {
+    err: [{
         message: 'Ooops'
-    }
+    }]
 }]
 
 export const STATS = {
@@ -93,7 +103,8 @@ export const STATS = {
         }
     },
     getSpecHash: () => '12345',
-    getFailures: () => []
+    getFailures: () => [],
+    getPasses: () => []
 }
 
 export const STATS_WITH_NO_SPECS = {
@@ -111,7 +122,8 @@ export const STATS_WITH_NO_SPECS = {
         }
     },
     getSpecHash: () => '12345',
-    getFailures: () => []
+    getFailures: () => [],
+    getPasses: () => []
 }
 
 export const STATS_WITH_MULTIPLE_RUNNERS = {
@@ -140,7 +152,8 @@ export const STATS_WITH_MULTIPLE_RUNNERS = {
         }
     },
     getSpecHash: () => '12345',
-    getFailures: () => []
+    getFailures: () => [],
+    getPasses: () => []
 }
 
 export const RESULTLIST = `kuckkuck>  some foobar test
@@ -174,6 +187,14 @@ kuckkuck>  oh shit
 kuckkuck>  something
 kuckkuck>  went
 kuckkuck>  wrong
+`
+export const ERRORLIST_W_PASS = `kuckkuck>
+kuckkuck>  1) some parent some title:
+kuckkuck>  Ooops
+kuckkuck>  Hi
+kuckkuck>  what up
+kuckkuck>  there?
+kuckkuck>  oh good
 `
 
 export const ERRORLIST_NO_STACK = `kuckkuck>
