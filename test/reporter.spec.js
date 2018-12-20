@@ -2,8 +2,8 @@ import sinon from 'sinon'
 import chalk from 'chalk'
 import SpecReporter from '../lib/reporter'
 import {
-    SUITE, RESULTLIST, SUMMARY, ERRORS, ERRORLIST,
-    STATS, STATS_WITH_NO_SPECS, SUITERESULT, JOBLINKRESULT,
+    SUITE, RESULTLIST, SUMMARY, ERRORS, ERRORS_W_PASS, ERRORLIST,
+    ERRORLIST_W_PASS, STATS, STATS_WITH_NO_SPECS, SUITERESULT, JOBLINKRESULT,
     ERRORS_NO_STACK, ERRORLIST_NO_STACK, SUITES_SUMMARY,
     STATS_WITH_MULTIPLE_RUNNERS
 } from './fixtures'
@@ -274,7 +274,9 @@ describe('spec reporter', () => {
         it('should return correct failure list', () => {
             reporter.getFailureList(ERRORS, 'kuckkuck> ').should.be.equal(ERRORLIST)
         })
-
+        it('should return correct failure list with a non error', () => {
+            reporter.getFailureList(ERRORS_W_PASS, 'kuckkuck> ').should.be.equal(ERRORLIST_W_PASS)
+        })
         it('should handle error messages without a stack trace correctly', () => {
             reporter.getFailureList(ERRORS_NO_STACK, 'kuckkuck> ').should.be.equal(ERRORLIST_NO_STACK)
         })
